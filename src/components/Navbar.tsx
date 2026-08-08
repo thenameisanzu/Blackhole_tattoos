@@ -7,18 +7,15 @@ import { useTheme } from "./ThemeProvider";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
+  const [showLogo, setShowLogo] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
-      if (window.scrollY > 40) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      const y = window.scrollY;
+      setScrolled(y > 40);
+      setShowLogo(y >= 280);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -69,11 +66,11 @@ export default function Navbar() {
             className="flex items-center gap-3 group"
           >
             <div 
-              className="relative w-10 h-10 transition-all duration-300 group-hover:rotate-12 navbar-logo shrink-0"
+              className="relative w-10 h-10 transition-all duration-500 group-hover:rotate-12 navbar-logo shrink-0"
               style={{
-                opacity: scrollY >= 280 ? 1 : 0,
-                transform: `scale(${scrollY >= 280 ? 1 : 0.7})`,
-                pointerEvents: scrollY >= 280 ? "auto" : "none"
+                opacity: showLogo ? 1 : 0,
+                transform: `scale(${showLogo ? 1 : 0.7})`,
+                pointerEvents: showLogo ? "auto" : "none"
               }}
             >
               <Image

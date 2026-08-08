@@ -9,7 +9,6 @@ import { useGSAP } from "@gsap/react";
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [scrollY, setScrollY] = useState(0);
   const [offsets, setOffsets] = useState({ x: 0, y: 0, scale: 1 });
   const [isMobile, setIsMobile] = useState(false);
 
@@ -17,14 +16,37 @@ export default function Hero() {
     setIsMobile(window.innerWidth < 1024 || window.matchMedia("(pointer: coarse)").matches);
   }, []);
 
-  // Scroll listener to drive flight animation
+  // Direct DOM scroll-driven logo flight path (optimized for 60/120fps by bypassing React state renders)
   useEffect(() => {
+    const heroLogo = document.querySelector(".hero-logo-o") as HTMLElement;
+    if (!heroLogo) return;
+
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      const y = window.scrollY;
+      const progress = Math.min(y / 300, 1);
+      
+      const isMobileDevice = window.innerWidth < 1024 || window.matchMedia("(pointer: coarse)").matches;
+      
+      if (isMobileDevice) {
+        heroLogo.style.transform = "none";
+        heroLogo.style.opacity = y >= 280 ? "0" : "1";
+        heroLogo.style.pointerEvents = y >= 280 ? "none" : "auto";
+      } else {
+        const tx = progress * offsets.x;
+        const ty = progress * offsets.y + y;
+        const scale = 1 - progress * (1 - offsets.scale);
+        
+        heroLogo.style.transform = `translate3d(${tx}px, ${ty}px, 0) scale(${scale})`;
+        heroLogo.style.opacity = y >= 280 ? "0" : "1";
+        heroLogo.style.pointerEvents = y >= 280 ? "none" : "auto";
+      }
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Trigger initial layout setup
+    
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [offsets]);
 
   // Measure coordinates between Hero logo and Navbar logo at scroll = 0
   useEffect(() => {
@@ -403,20 +425,7 @@ export default function Hero() {
     }
   };
 
-  const maxScroll = 300;
-  const scrollProgress = Math.min(scrollY / maxScroll, 1);
 
-  // Dynamic CSS translation and scaling to fly into the navbar logo slot
-  const logoStyle: React.CSSProperties = isMobile ? {
-    opacity: scrollY >= 280 ? 0 : 1,
-    pointerEvents: scrollY >= 280 ? "none" : "auto",
-    willChange: "opacity",
-  } : {
-    transform: `translate(${scrollProgress * offsets.x}px, ${scrollProgress * offsets.y + scrollY * scrollProgress}px) scale(${1 - scrollProgress * (1 - offsets.scale)})`,
-    opacity: scrollY >= 280 ? 0 : 1,
-    pointerEvents: scrollY >= 280 ? "none" : "auto",
-    willChange: "transform, opacity",
-  };
 
   return (
     <section
@@ -453,8 +462,7 @@ export default function Hero() {
           
           {/* Scroll-driven outer flight container */}
           <span 
-            className="hero-logo-o relative inline-block w-[0.82em] h-[0.82em] aspect-square flex-none align-middle mx-[0.02em]"
-            style={logoStyle}
+            className="hero-logo-o relative inline-block w-[0.82em] h-[0.82em] aspect-square flex-none align-middle mx-[0.02em] will-change-transform"
           >
             {/* GSAP entrance animated inner wrapper */}
             <span className="hero-logo-wrapper relative block w-full h-full aspect-square">
