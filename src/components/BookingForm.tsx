@@ -197,34 +197,33 @@ export default function BookingForm() {
     };
 
     const serviceLabel = getServiceLabel(data.service);
-    
     let message = `*BLACKHOLE TATTOO STUDIO - BOOKING REQUEST*\n\n`;
-    message += `👤 *Client:* ${data.name}\n`;
-    message += `📞 *Phone:* ${data.phone}\n`;
-    message += `📧 *Email:* ${data.email}\n`;
-    message += `✨ *Service:* ${serviceLabel}\n`;
+    message += `\uD83D\uDC64 *Client:* ${data.name}\n`;
+    message += `\uD83D\uDCDE *Phone:* ${data.phone}\n`;
+    message += `\uD83D\uDCE7 *Email:* ${data.email}\n`;
+    message += `\u2728 *Service:* ${serviceLabel}\n`;
     
     if (data.service === "tattoo") {
-      message += `🎨 *Style:* ${getStyleLabel(data.style)}\n`;
-      message += `📍 *Placement:* ${getPlacementLabel(data.placement)}\n`;
-      message += `📏 *Size:* ${getSizeLabel(data.size)}\n`;
+      message += `\uD83C\uDFA8 *Style:* ${getStyleLabel(data.style)}\n`;
+      message += `\uD83D\uDCCD *Placement:* ${getPlacementLabel(data.placement)}\n`;
+      message += `\uD83D\uDCCF *Size:* ${getSizeLabel(data.size)}\n`;
     }
     
-    message += `📅 *Preferred Date:* ${data.date}\n`;
-    message += `⏰ *Preferred Time Slot:* ${data.time}\n`;
+    message += `\uD83D\uDCC5 *Preferred Date:* ${data.date}\n`;
+    message += `\u23F0 *Preferred Time Slot:* ${data.time}\n`;
     
     if (uploadedImageUrl) {
-      message += `🖼️ *Reference Image:* ${uploadedImageUrl}\n`;
+      message += `\uD83D\uDDBC\uFE0F *Reference Image:* ${uploadedImageUrl}\n`;
     } else if (selectedFile) {
-      message += `🖼️ *Reference Image:* Attached (Ready to share)\n`;
+      message += `\uD83D\uDDBC\uFE0F *Reference Image:* Attached (Ready to share)\n`;
     }
     
     if (data.notes) {
-      message += `📝 *Project Brief:* ${data.notes}\n`;
+      message += `\uD83D\uDCDD *Project Brief:* ${data.notes}\n`;
     }
     
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/916235456525?text=${encodedMessage}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=916235456525&text=${encodedMessage}`;
     
     window.open(whatsappUrl, "_blank");
 

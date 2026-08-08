@@ -33,14 +33,14 @@ export default function Contact() {
       : "General Consultation / Enquiry";
 
     let message = `*BLACKHOLE TATTOO STUDIO - GENERAL ENQUIRY*\n\n`;
-    message += `👤 *Name:* ${data.name}\n`;
-    message += `📞 *Phone:* ${data.phone}\n`;
-    message += `📧 *Email:* ${data.email}\n`;
-    message += `✨ *Service Interested In:* ${serviceLabel}\n`;
-    message += `📝 *Message:* ${data.message}\n`;
+    message += `\uD83D\uDC64 *Name:* ${data.name}\n`;
+    message += `\uD83D\uDCDE *Phone:* ${data.phone}\n`;
+    message += `\uD83D\uDCE7 *Email:* ${data.email}\n`;
+    message += `\u2728 *Service Interested In:* ${serviceLabel}\n`;
+    message += `\uD83D\uDCDD *Message:* ${data.message}\n`;
     
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/916235456525?text=${encodedMessage}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=916235456525&text=${encodedMessage}`;
     
     window.open(whatsappUrl, "_blank");
 
@@ -138,7 +138,7 @@ export default function Contact() {
             {/* Direct Connect Buttons */}
             <div className="flex flex-wrap items-center gap-4 pt-4">
               <a
-                href="https://wa.me/916235456525"
+                href="https://api.whatsapp.com/send?phone=916235456525"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 rounded-lg bg-green-950/20 hover:bg-green-600 border border-green-800 text-white font-sans text-xs font-bold tracking-widest uppercase flex items-center gap-2 transition-all duration-300"
