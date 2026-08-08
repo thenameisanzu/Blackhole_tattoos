@@ -66,12 +66,7 @@ export default function Navbar() {
             className="flex items-center gap-3 group"
           >
             <div 
-              className="relative w-10 h-10 transition-all duration-500 group-hover:rotate-12 navbar-logo shrink-0"
-              style={{
-                opacity: showLogo ? 1 : 0,
-                transform: `scale(${showLogo ? 1 : 0.7})`,
-                pointerEvents: showLogo ? "auto" : "none"
-              }}
+              className="relative w-10 h-10 transition-all duration-500 group-hover:rotate-12 navbar-logo shrink-0 opacity-0 pointer-events-none"
             >
               <Image
                 src="/assets/logo_transparent.png"

@@ -13,7 +13,7 @@ export default function Hero() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 1024 || window.matchMedia("(pointer: coarse)").matches);
+    setIsMobile(window.innerWidth < 768);
   }, []);
 
   // Direct DOM scroll-driven logo flight path (optimized for 60/120fps by bypassing React state renders)
@@ -25,20 +25,38 @@ export default function Hero() {
       const y = window.scrollY;
       const progress = Math.min(y / 300, 1);
       
-      const isMobileDevice = window.innerWidth < 1024 || window.matchMedia("(pointer: coarse)").matches;
+      const isMobileDevice = window.innerWidth < 768;
+      const navLogo = document.querySelector(".navbar-logo") as HTMLElement;
       
       if (isMobileDevice) {
         heroLogo.style.transform = "none";
         heroLogo.style.opacity = y >= 280 ? "0" : "1";
         heroLogo.style.pointerEvents = y >= 280 ? "none" : "auto";
+        if (navLogo) {
+          navLogo.style.opacity = y >= 280 ? "1" : "0";
+          navLogo.style.transform = `scale(${y >= 280 ? 1 : 0.7})`;
+        }
       } else {
         const tx = progress * offsets.x;
         const ty = progress * offsets.y + y;
         const scale = 1 - progress * (1 - offsets.scale);
         
+        // 1. Move the hero logo
         heroLogo.style.transform = `translate3d(${tx}px, ${ty}px, 0) scale(${scale})`;
-        heroLogo.style.opacity = y >= 280 ? "0" : "1";
-        heroLogo.style.pointerEvents = y >= 280 ? "none" : "auto";
+        heroLogo.style.opacity = (1 - progress).toString();
+        heroLogo.style.pointerEvents = progress >= 0.95 ? "none" : "auto";
+        
+        // 2. Cross-fade the navbar logo in sync
+        if (navLogo) {
+          if (progress > 0 && progress < 1) {
+            navLogo.style.transition = "none";
+          } else {
+            navLogo.style.transition = ""; // Restore native transitions for hovers
+          }
+          navLogo.style.opacity = progress.toString();
+          navLogo.style.transform = `scale(${0.7 + progress * 0.3})`;
+          navLogo.style.pointerEvents = progress >= 0.95 ? "auto" : "none";
+        }
       }
     };
 
@@ -63,15 +81,16 @@ export default function Hero() {
 
       heroLogo.style.transform = prevTransform;
 
+      // Use scroll-independent absolute positions so refreshes/resizes at any scrollY compute correctly
       const dx = navRect.left - heroRect.left;
-      const dy = navRect.top - heroRect.top;
+      const dy = navRect.top - (heroRect.top + window.scrollY);
       const scale = navRect.width / heroRect.width;
 
       setOffsets({ x: dx, y: dy, scale });
     };
 
-    // Delay slightly to ensure images are loaded and layout is ready
-    const timer = setTimeout(measure, 500);
+    // Delay by 2000ms to ensure the GSAP letters entrance animation is fully finished and layout has settled
+    const timer = setTimeout(measure, 2000);
     window.addEventListener("resize", measure);
     return () => {
       clearTimeout(timer);
