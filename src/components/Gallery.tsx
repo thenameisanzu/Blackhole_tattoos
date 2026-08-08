@@ -223,8 +223,8 @@ export default function Gallery() {
                 onClick={() => setActiveTab(tab.key as any)}
                 className={`px-5 py-2.5 text-[10px] md:text-xs font-bold tracking-widest uppercase rounded-full border transition-all duration-500 cursor-pointer whitespace-nowrap ${
                   activeTab === tab.key
-                    ? "bg-red-600 border-red-600 text-white shadow-[0_4px_20px_rgba(220,38,38,0.25)]"
-                    : "border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-500"
+                    ? "bg-gold-accent border-gold-accent text-black font-extrabold shadow-[0_4px_20px_rgba(221,177,30,0.25)]"
+                    : "border-zinc-800 text-zinc-400 hover:text-gold-accent hover:border-gold-accent/50"
                 }`}
               >
                 {tab.label}
