@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Upload, Calendar, Clock, CheckCircle2, AlertCircle, ChevronDown } from "lucide-react";
+import { Calendar, Clock, CheckCircle2, AlertCircle, ChevronDown } from "lucide-react";
 import confetti from "canvas-confetti";
 
 type FormData = {
@@ -20,11 +20,6 @@ type FormData = {
 
 export default function BookingForm() {
   const [submitted, setSubmitted] = useState(false);
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [filePreview, setFilePreview] = useState<string | null>(null);
-  const [isDragActive, setIsDragActive] = useState(false);
-  const [isUploading, setIsUploading] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const {
     register,
@@ -43,45 +38,6 @@ export default function BookingForm() {
   });
 
   const selectedService = watch("service");
-
-  // Handle Drag & Drop
-  const handleDrag = (e: React.DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (e.type === "dragenter" || e.type === "dragover") {
-      setIsDragActive(true);
-    } else if (e.type === "dragleave") {
-      setIsDragActive(false);
-    }
-  };
-
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDragActive(false);
-
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      const file = e.dataTransfer.files[0];
-      setSelectedFile(file);
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setFilePreview(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      setSelectedFile(file);
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setFilePreview(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
 
   const triggerConfetti = () => {
     // Left burst
@@ -103,56 +59,7 @@ export default function BookingForm() {
   };
 
   const onSubmit = async (data: FormData) => {
-    console.log("Booking submitted: ", { ...data, file: selectedFile });
-    
-    const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-    const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
-
-    let uploadedImageUrl = "";
-    if (selectedFile) {
-      setIsUploading(true);
-      try {
-        const formData = new FormData();
-        formData.append("file", selectedFile);
-        
-        if (cloudName && uploadPreset) {
-          // Cloudinary Unsigned Upload (Permanent Storage)
-          formData.append("upload_preset", uploadPreset);
-          const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-            method: "POST",
-            body: formData,
-          });
-          
-          if (response.ok) {
-            const resData = await response.json();
-            if (resData?.secure_url) {
-              uploadedImageUrl = resData.secure_url;
-            }
-          } else {
-            console.error("Cloudinary upload failed: ", await response.text());
-          }
-        } else {
-          // Fallback to tmpfiles.org for local testing
-          console.warn("Cloudinary credentials not configured. Falling back to tmpfiles.org temporary hosting.");
-          
-          const response = await fetch("https://tmpfiles.org/api/v1/upload", {
-            method: "POST",
-            body: formData,
-          });
-          
-          if (response.ok) {
-            const resData = await response.json();
-            if (resData?.data?.url) {
-              uploadedImageUrl = resData.data.url.replace("https://tmpfiles.org/", "https://tmpfiles.org/dl/");
-            }
-          }
-        }
-      } catch (err) {
-        console.error("Failed to upload image:", err);
-      } finally {
-        setIsUploading(false);
-      }
-    }
+    console.log("Booking submitted: ", { ...data });
 
     const getServiceLabel = (val: string) => {
       switch(val) {
@@ -212,12 +119,6 @@ export default function BookingForm() {
     message += `\uD83D\uDCC5 *Preferred Date:* ${data.date}\n`;
     message += `\u23F0 *Preferred Time Slot:* ${data.time}\n`;
     
-    if (uploadedImageUrl) {
-      message += `\uD83D\uDDBC\uFE0F *Reference Image:* ${uploadedImageUrl}\n`;
-    } else if (selectedFile) {
-      message += `\uD83D\uDDBC\uFE0F *Reference Image:* Attached (Ready to share)\n`;
-    }
-    
     if (data.notes) {
       message += `\uD83D\uDCDD *Project Brief:* ${data.notes}\n`;
     }
@@ -233,8 +134,6 @@ export default function BookingForm() {
 
     // Reset Form
     reset();
-    setSelectedFile(null);
-    setFilePreview(null);
   };
 
   return (
@@ -497,53 +396,6 @@ export default function BookingForm() {
                   SECTION 3 <span className="text-red-500">//</span> BRIEFING DOSSIER
                 </h3>
 
-                {/* Reference Upload */}
-                <div className="flex flex-col gap-2">
-                  <label className="text-[10px] font-bold tracking-widest text-zinc-500 dark:text-zinc-400 uppercase">
-                    Reference Visual / Design Sketch
-                  </label>
-                  <div
-                    onDragEnter={handleDrag}
-                    onDragOver={handleDrag}
-                    onDragLeave={handleDrag}
-                    onDrop={handleDrop}
-                    onClick={() => fileInputRef.current?.click()}
-                    className={`${
-                      isDragActive
-                        ? "border-gold-accent bg-gold-accent/5"
-                        : "border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-500 bg-zinc-50 dark:bg-zinc-950/20"
-                    } border-2 border-dashed rounded-lg p-8 text-center flex flex-col items-center justify-center gap-3 cursor-pointer transition-all duration-300`}
-                  >
-                    <input
-                      ref={fileInputRef}
-                      type="file"
-                      accept="image/*"
-                      onChange={handleFileChange}
-                      className="hidden"
-                    />
-
-                    {filePreview ? (
-                      <div className="relative w-28 h-28 rounded-md overflow-hidden border border-zinc-200 dark:border-zinc-700 shadow-md">
-                        <img src={filePreview} alt="Reference preview" className="w-full h-full object-cover" />
-                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                          <span className="text-[9px] font-bold uppercase text-white">Change File</span>
-                        </div>
-                      </div>
-                    ) : (
-                      <>
-                        <Upload className="w-6 h-6 text-zinc-400 dark:text-zinc-500 group-hover:text-zinc-300" />
-                        <span className="text-xs text-zinc-600 dark:text-zinc-400 font-light">
-                          Drag and drop your reference image here, or{" "}
-                          <span className="text-gold-accent font-semibold underline">browse files</span>
-                        </span>
-                        <span className="text-[9px] text-zinc-500 dark:text-zinc-600 uppercase">
-                          Supports PNG, JPG (Max 5MB)
-                        </span>
-                      </>
-                    )}
-                  </div>
-                </div>
-
                 {/* Additional Notes */}
                 <div className="flex flex-col gap-2">
                   <label htmlFor="notes" className="text-[10px] font-bold tracking-widest text-zinc-500 dark:text-zinc-400 uppercase">
@@ -563,16 +415,13 @@ export default function BookingForm() {
               <div className="pt-6">
                 <button
                   type="submit"
-                  disabled={isUploading}
-                  className="w-full py-4 text-xs font-black tracking-[0.3em] bg-gold-accent hover:bg-gold-accent/90 disabled:bg-zinc-800 text-black uppercase rounded-lg transition-all duration-300 shadow-[0_4px_30px_rgba(221,177,30,0.25)] hover:scale-[1.01] relative overflow-hidden group disabled:cursor-not-allowed cursor-pointer"
-                  data-cursor-text={isUploading ? "UPLOADING" : "CONFIRM"}
+                  className="w-full py-4 text-xs font-black tracking-[0.3em] bg-gold-accent hover:bg-gold-accent/90 text-black uppercase rounded-lg transition-all duration-300 shadow-[0_4px_30px_rgba(221,177,30,0.25)] hover:scale-[1.01] relative overflow-hidden group cursor-pointer"
+                  data-cursor-text="CONFIRM"
                 >
                   <span className="relative z-10 font-bold">
-                    {isUploading ? "UPLOADING REFERENCE..." : "BOOK CONSULTATION SESSION"}
+                    BOOK CONSULTATION SESSION
                   </span>
-                  {!isUploading && (
-                    <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-gold-accent to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-0" />
-                  )}
+                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-gold-accent to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-0" />
                 </button>
               </div>
 
