@@ -436,7 +436,7 @@ export default function Hero() {
         {/* Cinematic Mini Tag */}
         <div className="mb-4 text-[10px] md:text-xs font-bold tracking-[0.6em] text-red-500 uppercase flex items-center gap-3 hero-fade-up">
           <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping" />
-          ESTD. 2018 • PREMIUM TATTOO COLLECTIVE
+          ESTD. 2016 • PREMIUM TATTOO COLLECTIVE
         </div>
 
         {/* Massive Hero Heading - Using fluid text-size to fit mobile screens */}
