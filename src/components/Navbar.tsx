@@ -84,7 +84,7 @@ export default function Navbar() {
                 className="object-contain drop-shadow-[0_0_8px_rgba(221,177,30,0.45)]"
               />
             </div>
-            <span className="font-sans text-lg font-black tracking-[0.25em] text-zinc-100 dark:text-zinc-100 group-hover:text-red-500 transition-colors duration-300">
+            <span className="font-sans text-lg font-black tracking-[0.25em] text-zinc-100 dark:text-zinc-100 group-hover:text-gold-accent transition-colors duration-300">
               BLACKHOLE
             </span>
           </a>

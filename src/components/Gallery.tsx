@@ -206,12 +206,12 @@ export default function Gallery() {
         {/* Section Title */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
           <div>
-            <div className="text-xs font-bold tracking-[0.4em] text-red-500 uppercase mb-4">
-              01 <span className="text-gold-accent">//</span> GALLERY EXHIBITION
+            <div className="text-xs font-bold tracking-[0.4em] text-gold-accent uppercase mb-4">
+              01 <span className="text-red-500">//</span> GALLERY EXHIBITION
             </div>
             <h2 className="font-display text-4xl md:text-6xl font-black uppercase tracking-tight leading-none">
               THE PORTFOLIO <br />
-              <span className="font-serif italic font-light text-red-500 tracking-wide">OF PERMANENT</span> COLLECTIVES
+              <span className="font-serif italic font-light text-gold-accent tracking-wide">OF PERMANENT</span> COLLECTIVES
             </h2>
           </div>
 

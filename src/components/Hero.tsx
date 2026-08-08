@@ -494,7 +494,7 @@ export default function Hero() {
           
           <button
             onClick={() => handleScrollTo("#gallery")}
-            className="px-8 py-4 text-xs font-bold tracking-widest text-white border border-zinc-700 hover:border-red-600 rounded-full bg-zinc-900/40 hover:bg-zinc-900/80 uppercase transition-all duration-300 hover:scale-105 cursor-pointer"
+            className="px-8 py-4 text-xs font-bold tracking-widest text-white border border-zinc-700 hover:border-gold-accent rounded-full bg-zinc-900/40 hover:bg-zinc-900/80 uppercase transition-all duration-300 hover:scale-105 cursor-pointer"
             data-cursor-text="View"
           >
             Explore Gallery
@@ -502,13 +502,12 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Quick Action Sidebars (Floating) */}
       <div className="absolute bottom-10 left-10 z-20 hidden md:flex items-center gap-6 text-xs font-bold tracking-[0.3em] text-zinc-500 uppercase hero-fade-in">
         <a 
           href="https://wa.me/916235456525" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="hover:text-green-500 flex items-center gap-2 transition-colors duration-300"
+          className="hover:text-gold-accent flex items-center gap-2 transition-colors duration-300"
           data-cursor-text="Chat"
         >
           <MessageCircle size={14} /> WHATSAPP
@@ -518,7 +517,7 @@ export default function Hero() {
           href="https://www.instagram.com/blackholetattoos" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="hover:text-red-500 flex items-center gap-2 transition-colors duration-300"
+          className="hover:text-gold-accent flex items-center gap-2 transition-colors duration-300"
           data-cursor-text="Follow"
         >
           <Instagram size={14} /> INSTAGRAM
@@ -526,7 +525,7 @@ export default function Hero() {
         <span className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
         <a 
           href="tel:+916235456525" 
-          className="hover:text-blue-400 flex items-center gap-2 transition-colors duration-300"
+          className="hover:text-red-500 flex items-center gap-2 transition-colors duration-300"
           data-cursor-text="Call"
         >
           <Phone size={14} /> CALL NOW

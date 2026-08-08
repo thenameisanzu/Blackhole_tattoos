@@ -73,12 +73,12 @@ export default function WhyUs() {
         
         {/* Header */}
         <div className="max-w-3xl mb-20">
-          <div className="text-xs font-bold tracking-[0.4em] text-red-500 uppercase mb-4">
-            04 <span className="text-gold-accent">//</span> UNCOMPROMISING STANDARDS
+          <div className="text-xs font-bold tracking-[0.4em] text-gold-accent uppercase mb-4">
+            04 <span className="text-red-500">//</span> UNCOMPROMISING STANDARDS
           </div>
           <h2 className="font-display text-4xl md:text-6xl font-black uppercase tracking-tight leading-tight">
             WHY CLIENTS TRUST <br />
-            <span className="font-serif italic font-light text-red-500 tracking-wide">BLACKHOLE STUDIO</span>
+            <span className="font-serif italic font-light text-gold-accent tracking-wide">BLACKHOLE STUDIO</span>
           </h2>
           <p className="mt-6 font-sans text-zinc-600 dark:text-zinc-400 font-light max-w-xl">
             We operate at the intersection of contemporary art, luxury hospitality, and medical-grade clinical precision.
@@ -90,7 +90,7 @@ export default function WhyUs() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`p-8 md:p-10 rounded-xl bg-white/40 dark:bg-zinc-900/30 border border-zinc-200 dark:border-zinc-800/80 hover:border-red-600/30 transition-all duration-700 hover:scale-[1.01] flex flex-col group shadow-lg ${
+              className={`p-8 md:p-10 rounded-xl bg-white/40 dark:bg-zinc-900/30 border border-zinc-200 dark:border-zinc-800/80 hover:border-gold-accent/30 transition-all duration-700 hover:scale-[1.01] flex flex-col group shadow-lg ${
                 inView ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
               }`}
               style={{
@@ -98,11 +98,11 @@ export default function WhyUs() {
               }}
             >
               {/* Glowing back-dot on hover */}
-              <div className="w-12 h-12 mb-6 rounded-lg bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center relative z-10 group-hover:border-red-600/40 group-hover:shadow-[0_0_15px_rgba(220,38,38,0.2)] transition-all duration-500">
+              <div className="w-12 h-12 mb-6 rounded-lg bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center relative z-10 group-hover:border-gold-accent/45 group-hover:shadow-[0_0_15px_rgba(221,177,30,0.2)] transition-all duration-500">
                 {feature.icon}
               </div>
 
-              <h3 className="font-display text-xl font-bold uppercase text-zinc-900 dark:text-zinc-100 tracking-tight mb-4 group-hover:text-red-500 transition-colors duration-300">
+              <h3 className="font-display text-xl font-bold uppercase text-zinc-900 dark:text-zinc-100 tracking-tight mb-4 group-hover:text-gold-accent transition-colors duration-300">
                 {feature.title}
               </h3>
 

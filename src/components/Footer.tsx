@@ -85,7 +85,7 @@ export default function Footer() {
                   Welcome to the collective. Inquiries log secured.
                 </p>
               ) : (
-                <form onSubmit={handleSubscribe} className="relative flex items-center border-b border-zinc-800 focus-within:border-red-600 transition-colors py-2">
+                <form onSubmit={handleSubscribe} className="relative flex items-center border-b border-zinc-800 focus-within:border-gold-accent transition-colors py-2">
                   <input
                     type="email"
                     placeholder="Enter email address"
@@ -96,7 +96,7 @@ export default function Footer() {
                   />
                   <button
                     type="submit"
-                    className="absolute right-0 text-zinc-500 hover:text-red-500 transition-colors cursor-pointer"
+                    className="absolute right-0 text-zinc-500 hover:text-gold-accent transition-colors cursor-pointer"
                     aria-label="Submit Newsletter"
                   >
                     <ArrowRight size={14} />
@@ -124,7 +124,7 @@ export default function Footer() {
                   <a
                     href={link.href}
                     onClick={(e) => handleScrollTo(e, link.href)}
-                    className="hover:text-red-500 transition-colors duration-300"
+                    className="hover:text-gold-accent transition-colors duration-300"
                   >
                     {link.label}
                   </a>
@@ -140,22 +140,22 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs font-light">
               <li>
-                <a href="#services" onClick={(e) => handleScrollTo(e, "#services")} className="hover:text-red-500 transition-colors duration-300">
+                <a href="#services" onClick={(e) => handleScrollTo(e, "#services")} className="hover:text-gold-accent transition-colors duration-300">
                   Custom Tattooing
                 </a>
               </li>
               <li>
-                <a href="#services" onClick={(e) => handleScrollTo(e, "#services")} className="hover:text-red-500 transition-colors duration-300">
+                <a href="#services" onClick={(e) => handleScrollTo(e, "#services")} className="hover:text-gold-accent transition-colors duration-300">
                   Precision Piercing
                 </a>
               </li>
               <li>
-                <a href="#booking" onClick={(e) => handleScrollTo(e, "#booking")} className="hover:text-red-500 transition-colors duration-300">
+                <a href="#booking" onClick={(e) => handleScrollTo(e, "#booking")} className="hover:text-gold-accent transition-colors duration-300">
                   Curated Ear Styling
                 </a>
               </li>
               <li>
-                <a href="#booking" onClick={(e) => handleScrollTo(e, "#booking")} className="hover:text-red-500 transition-colors duration-300">
+                <a href="#booking" onClick={(e) => handleScrollTo(e, "#booking")} className="hover:text-gold-accent transition-colors duration-300">
                   Creative Design Consults
                 </a>
               </li>
@@ -170,7 +170,7 @@ export default function Footer() {
             <ul className="space-y-3 text-xs font-light">
               <li>
                 <span className="block text-[9px] font-bold tracking-widest text-zinc-600 uppercase mb-0.5">Phone Line</span>
-                <a href="tel:+916235456525" className="text-zinc-300 hover:text-red-500 transition-colors">
+                <a href="tel:+916235456525" className="text-zinc-300 hover:text-gold-accent transition-colors">
                   +91 62354 56525
                 </a>
               </li>
@@ -181,7 +181,7 @@ export default function Footer() {
                     href="https://www.instagram.com/blackholetattoos"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-zinc-500 hover:text-red-500 transition-colors"
+                    className="text-zinc-500 hover:text-gold-accent transition-colors"
                     aria-label="Instagram Link"
                   >
                     <Instagram size={16} />
@@ -190,7 +190,7 @@ export default function Footer() {
                     href="https://wa.me/916235456525"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-zinc-500 hover:text-green-500 transition-colors"
+                    className="text-zinc-500 hover:text-gold-accent transition-colors"
                     aria-label="WhatsApp Link"
                   >
                     <MessageCircle size={16} />

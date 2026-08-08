@@ -250,12 +250,12 @@ export default function BookingForm() {
         
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="text-xs font-bold tracking-[0.4em] text-red-500 uppercase mb-4">
-            06 <span className="text-gold-accent">//</span> RESERVATIONS & CONSULTATION
+          <div className="text-xs font-bold tracking-[0.4em] text-gold-accent uppercase mb-4">
+            06 <span className="text-red-500">//</span> RESERVATIONS & CONSULTATION
           </div>
           <h2 className="font-display text-4xl md:text-5xl font-black uppercase tracking-tight">
             SECURE YOUR <br />
-            <span className="font-serif italic font-light text-red-500 tracking-wide">CREATIVE CONSPIRACY</span>
+            <span className="font-serif italic font-light text-gold-accent tracking-wide">CREATIVE CONSPIRACY</span>
           </h2>
           <p className="mt-4 font-sans text-zinc-600 dark:text-zinc-400 font-light max-w-lg mx-auto">
             Ready to immortalize your vision? Fill out our luxury briefing form. We will match you with the artist best suited for your project.
@@ -290,8 +290,8 @@ export default function BookingForm() {
               
               {/* SECTION 1: Personal Coordinates */}
               <div className="space-y-6">
-                <h3 className="font-display text-xs font-bold tracking-[0.25em] text-red-500 uppercase pb-2 border-b border-zinc-200 dark:border-zinc-800/60">
-                  SECTION 1 <span className="text-gold-accent">//</span> INDIVIDUAL COORDINATES
+                <h3 className="font-display text-xs font-bold tracking-[0.25em] text-gold-accent uppercase pb-2 border-b border-zinc-200 dark:border-zinc-800/60">
+                  SECTION 1 <span className="text-red-500">//</span> INDIVIDUAL COORDINATES
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Name */}
@@ -367,8 +367,8 @@ export default function BookingForm() {
 
               {/* SECTION 2: Project Specifications */}
               <div className="space-y-6">
-                <h3 className="font-display text-xs font-bold tracking-[0.25em] text-red-500 uppercase pb-2 border-b border-zinc-200 dark:border-zinc-800/60">
-                  SECTION 2 <span className="text-gold-accent">//</span> PROJECT SPECIFICATIONS
+                <h3 className="font-display text-xs font-bold tracking-[0.25em] text-gold-accent uppercase pb-2 border-b border-zinc-200 dark:border-zinc-800/60">
+                  SECTION 2 <span className="text-red-500">//</span> PROJECT SPECIFICATIONS
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Service */}
@@ -494,8 +494,8 @@ export default function BookingForm() {
 
               {/* SECTION 3: Visual References & Notes */}
               <div className="space-y-6">
-                <h3 className="font-display text-xs font-bold tracking-[0.25em] text-red-500 uppercase pb-2 border-b border-zinc-200 dark:border-zinc-800/60">
-                  SECTION 3 <span className="text-gold-accent">//</span> BRIEFING DOSSIER
+                <h3 className="font-display text-xs font-bold tracking-[0.25em] text-gold-accent uppercase pb-2 border-b border-zinc-200 dark:border-zinc-800/60">
+                  SECTION 3 <span className="text-red-500">//</span> BRIEFING DOSSIER
                 </h3>
 
                 {/* Reference Upload */}

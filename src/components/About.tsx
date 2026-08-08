@@ -101,13 +101,13 @@ export default function About() {
           }`}
         >
           {/* Editorial Section Index */}
-          <div className="text-xs font-bold tracking-[0.4em] text-red-500 uppercase mb-4">
-            02 <span className="text-gold-accent">//</span> ESTABLISHED EXCELLENCE
+          <div className="text-xs font-bold tracking-[0.4em] text-gold-accent uppercase mb-4">
+            02 <span className="text-red-500">//</span> ESTABLISHED EXCELLENCE
           </div>
 
           <h2 className="font-display text-4xl md:text-5xl font-black tracking-tight uppercase text-zinc-900 dark:text-zinc-100 mb-8 leading-tight">
             CRAFTING IMMORTAL <br />
-            <span className="font-serif italic font-light text-red-500 tracking-wide">DIGITAL ARTISTRY</span> ON SKIN
+            <span className="font-serif italic font-light text-gold-accent tracking-wide">DIGITAL ARTISTRY</span> ON SKIN
           </h2>
 
           <div className="font-sans text-sm md:text-base text-zinc-650 dark:text-zinc-400 font-light space-y-6 leading-relaxed">

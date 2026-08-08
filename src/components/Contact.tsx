@@ -86,12 +86,12 @@ export default function Contact() {
         
         {/* Header */}
         <div className="max-w-3xl mb-20">
-          <div className="text-xs font-bold tracking-[0.4em] text-red-500 uppercase mb-4">
-            07 <span className="text-gold-accent">//</span> CONNECTING COORDINATES
+          <div className="text-xs font-bold tracking-[0.4em] text-gold-accent uppercase mb-4">
+            07 <span className="text-red-500">//</span> CONNECTING COORDINATES
           </div>
           <h2 className="font-display text-4xl md:text-6xl font-black uppercase tracking-tight leading-tight">
             ESTABLISH <br />
-            <span className="font-serif italic font-light text-red-500 tracking-wide">CREATIVE LIASON</span>
+            <span className="font-serif italic font-light text-gold-accent tracking-wide">CREATIVE LIASON</span>
           </h2>
           <p className="mt-6 font-sans text-zinc-650 dark:text-zinc-400 font-light max-w-lg">
             Have questions about a custom design or scheduling? Drop us a line or visit our studio gallery in Kottayam.
@@ -205,7 +205,7 @@ export default function Contact() {
                   href="https://share.google/4FXHASNLBeZGetgfm"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[10px] font-bold tracking-widest text-red-500 hover:text-red-400 uppercase underline"
+                  className="text-[10px] font-bold tracking-widest text-gold-accent hover:text-gold-accent/80 uppercase underline"
                 >
                   Write Review
                 </a>
@@ -229,8 +229,8 @@ export default function Contact() {
           {/* RIGHT: High-end Contact Form (5 Cols) */}
           <div className="lg:col-span-5">
             <div className="glass-premium bg-white/90 dark:bg-zinc-900/90 p-8 md:p-10 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-xl">
-              <h3 className="font-display text-xs font-bold tracking-[0.25em] text-red-500 uppercase pb-4 border-b border-zinc-200 dark:border-zinc-800/60 mb-6">
-                FORM // EXPRESS INQUIRY
+              <h3 className="font-display text-xs font-bold tracking-[0.25em] text-gold-accent uppercase pb-4 border-b border-zinc-200 dark:border-zinc-800/60 mb-6">
+                FORM <span className="text-red-500">//</span> EXPRESS INQUIRY
               </h3>
 
               {submitted ? (

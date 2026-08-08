@@ -96,12 +96,12 @@ export default function Services() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 md:mb-28">
-          <div className="text-xs font-bold tracking-[0.4em] text-red-500 uppercase mb-4">
-            03 <span className="text-gold-accent">//</span> SERVICES OF EXCELLENCE
+          <div className="text-xs font-bold tracking-[0.4em] text-gold-accent uppercase mb-4">
+            03 <span className="text-red-500">//</span> SERVICES OF EXCELLENCE
           </div>
           <h2 className="font-display text-4xl md:text-6xl font-black uppercase tracking-tight text-zinc-900 dark:text-zinc-100 leading-tight">
             OUR SPECIALIZED <br />
-            <span className="font-serif italic font-light text-red-500 tracking-wide">CRAFT DISCIPLINARY</span>
+            <span className="font-serif italic font-light text-gold-accent tracking-wide">CRAFT DISCIPLINARY</span>
           </h2>
           <p className="mt-6 font-sans text-zinc-600 dark:text-zinc-400 font-light max-w-xl mx-auto">
             We focus exclusively on two core creative pillars, ensuring that each practitioner is a dedicated master of their craft.
@@ -113,7 +113,7 @@ export default function Services() {
           {services.map((service) => (
             <div
               key={service.id}
-              className="relative p-8 md:p-12 rounded-2xl bg-white/40 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/60 shadow-2xl transition-all duration-300 ease-out cursor-pointer group hover:border-red-600/30 flex flex-col justify-between overflow-hidden"
+              className="relative p-8 md:p-12 rounded-2xl bg-white/40 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800/60 shadow-2xl transition-all duration-300 ease-out cursor-pointer group hover:border-gold-accent/30 flex flex-col justify-between overflow-hidden"
               style={{
                 transform: tiltStyles[service.id] || "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
                 transformStyle: "preserve-3d",
@@ -154,7 +154,7 @@ export default function Services() {
                   <div className="p-3 rounded-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center">
                     {service.icon}
                   </div>
-                  <h3 className="font-display text-2xl md:text-3xl font-black uppercase text-zinc-900 dark:text-zinc-100 tracking-tight group-hover:text-red-500 transition-colors duration-300">
+                  <h3 className="font-display text-2xl md:text-3xl font-black uppercase text-zinc-900 dark:text-zinc-100 tracking-tight group-hover:text-gold-accent transition-colors duration-300">
                     {service.title}
                   </h3>
                 </div>

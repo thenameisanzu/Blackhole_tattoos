@@ -101,12 +101,12 @@ export default function Testimonials() {
         
         {/* Header */}
         <div className="text-center mb-16 md:mb-24">
-          <div className="text-xs font-bold tracking-[0.4em] text-red-500 uppercase mb-4">
-            05 <span className="text-gold-accent">//</span> CLIENT CHRONICLES
+          <div className="text-xs font-bold tracking-[0.4em] text-gold-accent uppercase mb-4">
+            05 <span className="text-red-500">//</span> CLIENT CHRONICLES
           </div>
           <h2 className="font-display text-4xl md:text-5xl font-black uppercase tracking-tight">
             TESTIMONIALS OF <br />
-            <span className="font-serif italic font-light text-red-500 tracking-wide">TRUST & EXCELLENCE</span>
+            <span className="font-serif italic font-light text-gold-accent tracking-wide">TRUST & EXCELLENCE</span>
           </h2>
         </div>
 
