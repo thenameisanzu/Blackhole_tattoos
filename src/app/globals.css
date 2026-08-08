@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap");
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #f4f4f3;
+  --primary-font: "Inter", sans-serif;
+  --serif-font: "Cormorant Garamond", serif;
+  --display-font: "Syne", sans-serif;
+}
+
+/* Light mode overrides */
+.light {
+  --background: #fbfbfa;
+  --foreground: #121212;
+}
+
+@theme inline {
+  --font-sans: var(--primary-font);
+  --font-serif: var(--serif-font);
+  --font-display: var(--display-font);
+  
+  --color-matte-black: #0a0a0a;
+  --color-charcoal: #121212;
+  --color-graphite: #1a1a1a;
+  --color-crimson: #bf0a0a;
+  --color-chrome-silver: #e5e5e5;
+  --color-electric-purple: #7c3aed;
+  --color-warm-white: #fbfbfa;
+  --color-soft-bone: #f4f4f3;
+  --color-gold-accent: #DDB11E;
+}
+
+/* Global resets and smooth transition between dark/light */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--primary-font);
+  overflow-x: hidden;
+  transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom premium scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.9);
+}
+.light ::-webkit-scrollbar-track {
+  background: rgba(240, 240, 240, 0.9);
+}
+::-webkit-scrollbar-thumb {
+  background: #bf0a0a;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #DDB11E;
+}
+
+/* Luxury Glassmorphism Utilities */
+.glass {
+  background: rgba(18, 18, 18, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.light .glass {
+  background: rgba(251, 251, 250, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.glass-premium {
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(10, 10, 10, 0.9) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+}
+
+.light .glass-premium {
+  background: linear-gradient(135deg, rgba(251, 251, 250, 0.9) 0%, rgba(244, 244, 243, 0.9) 100%);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+/* Film Grain Overlay */
+.film-grain {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200%;
+  background: transparent url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E') repeat;
+  opacity: 0.045;
+  pointer-events: none;
+  z-index: 9999;
+  animation: grain 8s steps(10) infinite;
+}
+
+.light .film-grain {
+  opacity: 0.03;
+}
+
+@keyframes grain {
+  0%, 100% { transform:translate(0, 0); }
+  10% { transform:translate(-5%, -10%); }
+  20% { transform:translate(-15%, 5%); }
+  30% { transform:translate(7%, -25%); }
+  40% { transform:translate(-5%, 25%); }
+  50% { transform:translate(-15%, 10%); }
+  60% { transform:translate(15%, 0%); }
+  70% { transform:translate(0%, 15%); }
+  80% { transform:translate(3%, 35%); }
+  90% { transform:translate(-10%, 10%); }
+}
+
+/* Typography Utility for massive headers */
+.text-stroke {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+  color: transparent;
+}
+
+.light .text-stroke {
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.1);
+}
+
+.text-stroke-active {
+  -webkit-text-stroke: 1px #bf0a0a;
+}
+
+/* Selection */
+::selection {
+  background: #DDB11E;
+  color: #000000;
+}
+
+/* Slow Pulse and Spin Animations */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.95; transform: scale(1.05); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s infinite ease-in-out;
+}
+
+/* custom hover reveal glow */
+.hover-glow {
+  position: relative;
+  overflow: hidden;
+}
+.hover-glow::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  transform: skewX(-25deg);
+  transition: 0.75s;
+}
+.hover-glow:hover::after {
+  left: 125%;
+}
+
+.light .hover-glow::after {
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.03), transparent);
+}
+
+/* Hide scrollbar for gallery masonry or filters */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
