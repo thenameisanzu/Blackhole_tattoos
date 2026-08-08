@@ -176,7 +176,7 @@ export default function Contact() {
                 href="https://share.google/4FXHASNLBeZGetgfm"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute bottom-4 right-4 z-10 glass px-4 py-2 rounded-lg border border-white/10 flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-zinc-200 hover:bg-red-600 hover:text-white hover:border-red-600 transition-all duration-300 shadow-lg"
+                className="absolute bottom-4 right-4 z-10 glass px-4 py-2 rounded-lg border border-white/10 flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-zinc-200 hover:bg-gold-accent hover:text-black hover:border-gold-accent transition-all duration-300 shadow-lg"
                 data-cursor-text="MAP"
               >
                 <Navigation size={12} /> Directions
@@ -339,10 +339,10 @@ export default function Contact() {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full py-3.5 text-[10px] font-bold tracking-[0.25em] bg-red-600 hover:bg-red-700 text-white uppercase rounded-lg transition-all duration-300 shadow-[0_4px_20px_rgba(220,38,38,0.15)] flex items-center justify-center gap-2 cursor-pointer group"
+                    className="w-full py-3.5 text-[10px] font-black tracking-[0.25em] bg-gold-accent hover:bg-gold-accent/90 text-black uppercase rounded-lg transition-all duration-300 shadow-[0_4px_20px_rgba(221,177,30,0.2)] flex items-center justify-center gap-2 cursor-pointer group"
                     data-cursor-text="SEND"
                   >
-                    <span>SEND MESSAGE</span>
+                    <span className="font-bold">SEND MESSAGE</span>
                     <Send size={12} className="group-hover:translate-x-1 transition-transform" />
                   </button>
                 </form>

@@ -188,13 +188,13 @@ export default function Services() {
               >
                 <button
                   onClick={handleScrollToBooking}
-                  className="flex-1 py-3.5 text-center text-xs font-bold tracking-widest bg-red-600 hover:bg-red-700 text-white uppercase rounded-lg transition-colors duration-300 shadow-[0_4px_15px_rgba(220,38,38,0.2)] cursor-pointer"
+                  className="flex-1 py-3.5 text-center text-xs font-black tracking-widest bg-gold-accent hover:bg-gold-accent/90 text-black uppercase rounded-lg transition-colors duration-300 shadow-[0_4px_15px_rgba(221,177,30,0.2)] cursor-pointer"
                 >
                   Book Appointment
                 </button>
                 <button
                   onClick={handleScrollToBooking}
-                  className="px-6 py-3.5 text-center text-xs font-bold tracking-widest text-zinc-650 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700 hover:border-red-600 hover:text-white uppercase rounded-lg transition-colors duration-300 bg-transparent cursor-pointer"
+                  className="px-6 py-3.5 text-center text-xs font-bold tracking-widest text-zinc-650 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700 hover:border-gold-accent hover:text-white uppercase rounded-lg transition-colors duration-300 bg-transparent cursor-pointer"
                 >
                   Consult
                 </button>

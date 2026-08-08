@@ -565,14 +565,14 @@ export default function BookingForm() {
                 <button
                   type="submit"
                   disabled={isUploading}
-                  className="w-full py-4 text-xs font-bold tracking-[0.3em] bg-red-600 hover:bg-red-700 disabled:bg-zinc-800 text-white uppercase rounded-lg transition-all duration-300 shadow-[0_4px_30px_rgba(220,38,38,0.2)] hover:scale-[1.01] relative overflow-hidden group disabled:cursor-not-allowed cursor-pointer"
+                  className="w-full py-4 text-xs font-black tracking-[0.3em] bg-gold-accent hover:bg-gold-accent/90 disabled:bg-zinc-800 text-black uppercase rounded-lg transition-all duration-300 shadow-[0_4px_30px_rgba(221,177,30,0.25)] hover:scale-[1.01] relative overflow-hidden group disabled:cursor-not-allowed cursor-pointer"
                   data-cursor-text={isUploading ? "UPLOADING" : "CONFIRM"}
                 >
-                  <span className="relative z-10">
+                  <span className="relative z-10 font-bold">
                     {isUploading ? "UPLOADING REFERENCE..." : "BOOK CONSULTATION SESSION"}
                   </span>
                   {!isUploading && (
-                    <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-red-700 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-0" />
+                    <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-gold-accent to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-0" />
                   )}
                 </button>
               </div>

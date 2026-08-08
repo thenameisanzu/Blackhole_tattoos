@@ -169,8 +169,8 @@ export default function LoadingScreen({ onFinished }: { onFinished: () => void }
           {/* Progress bar */}
           <div className="w-48 h-[1px] bg-zinc-800 mt-4 overflow-hidden rounded-full">
             <div
-              className="h-full bg-gradient-to-r from-red-700 via-yellow-500 to-white transition-all duration-100 ease-out"
-              style={{ width: `${progress}%`, boxShadow: "0 0 8px rgba(234,179,8,0.5)" }}
+              className="h-full bg-gradient-to-r from-gold-accent via-yellow-500 to-white transition-all duration-100 ease-out"
+              style={{ width: `${progress}%`, boxShadow: "0 0 8px rgba(221,177,30,0.5)" }}
             />
           </div>
         </div>
